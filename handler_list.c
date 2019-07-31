@@ -86,7 +86,7 @@ void			handler_handle(t_handler *root, char value)
 ** Доступна для модификации при необходимости дополнительных освобождений.
 */
 
-void		slist_free_elem(t_handler	*elem)
+void		handler_free_elem(t_handler	*elem)
 {
 	free(elem);
 }
@@ -95,7 +95,7 @@ void		slist_free_elem(t_handler	*elem)
 ** Полностью удаляет список обработчиков
 */
 
-void		slist_free_all(t_handler	**root)
+void		handler_free_all(t_handler	**root)
 {
 	t_handler		*root_ptr;
 	t_handler		*next_elem;
@@ -106,7 +106,7 @@ void		slist_free_all(t_handler	**root)
 	while (root_ptr)
 	{
 		next_elem = root_ptr->next;
-		slist_free_elem(root_ptr);
+		handler_free_elem(root_ptr);
 		root_ptr = next_elem;
 	}
 	*root = NULL;
