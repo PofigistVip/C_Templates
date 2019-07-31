@@ -61,6 +61,27 @@ t_handler		*handler_add_default(t_handler **root, void (*f)(void))
 }
 
 /*
+** Позволяет вызвать необходимую функцию по значению
+** Вызовет обработчик по умолчанию если совпадения не было найдено
+*/
+
+void			handler_handle(t_handler *root, char value)
+{
+	if (root == NULL)
+		return ;
+	while (root->next)
+	{
+		if (root->value = value)
+		{
+			root->f();
+			return ;
+		}
+		root = root->next;
+	}
+	root->f();
+}
+
+/*
 ** Освобождает обработчик из памяти.
 ** Доступна для модификации при необходимости дополнительных освобождений.
 */
